@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function QuestionResult(props) {
@@ -11,13 +11,7 @@ export default function QuestionResult(props) {
   };
 
   return (
-    <View
-      style={{
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: 40,
-      }}>
+    <View style={styles.resultContainer}>
       <Text style={styles.resultText}>
         {isCorrectAnswer ? 'Correct!' : 'Sorry!'}
       </Text>
@@ -31,6 +25,12 @@ export default function QuestionResult(props) {
 }
 
 const styles = {
+  resultContainer: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 40,
+  },
   resultText: {
     fontSize: 30,
   },

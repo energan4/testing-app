@@ -7,20 +7,27 @@ export default function QuizResult(props) {
   const questionsNumber = props.questionsNumber;
 
   return (
-    <View
-      style={{
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: 40,
-      }}>
-      <Text style={{fontSize: 18}} data-testid="final-score">
+    <View style={styles.quizResultContainer}>
+      <Text style={styles.quizResultText} data-testid="final-score">
         You achieved a score of {Math.round(finalScore)}%
       </Text>
-      <Text style={{fontSize: 18}} data-testid="final-correct-answers">
+      <Text style={styles.quizResultText} data-testid="final-correct-answers">
         You answered correctly {correctAnswersNumber} questions out of{' '}
         {questionsNumber}
       </Text>
     </View>
   );
 }
+
+const styles = {
+  quizResultContainer: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  quizResultText: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+};

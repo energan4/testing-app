@@ -1,14 +1,6 @@
 import React from 'react';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function ProgressBar(props) {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {combineShuffledAnswers} from '../../../utils/arrayUtils';
-import {Button, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function Answers(props) {
@@ -45,13 +45,6 @@ export default function Answers(props) {
   return (
     <View style={styles.container}>
       {answers.map((answer, i) => (
-        /*    <Button
-                title="hello"
-                disabled={isDisabled}
-                style={{width: '90%', color: Colors.dark}}
-                onClick={() => emitAnswer(answer)}
-                data-testid="btn-answer"
-              />*/
         <View key={i.toString()} style={styles.item}>
           <TouchableOpacity
             style={[styles.answerButton, correctAnswerButtonBg(answer.text)]}
@@ -59,7 +52,7 @@ export default function Answers(props) {
             onPress={() => emitAnswer(answer)}>
             <Text
               style={[
-                {fontSize: 13},
+                styles.answerButtonText,
                 correctAnswerButtonTextColor(answer.text),
               ]}>
               {decodeURIComponent(answer.text)}
@@ -72,24 +65,12 @@ export default function Answers(props) {
 }
 
 const styles = {
-  button: {
-    color: Colors.dark,
-    backgroundColor: Colors.light,
-    height: 40,
-    width: '50%',
-    borderWidth: 1,
-    borderColor: Colors.dark,
-  },
   container: {
     marginTop: 40,
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-  },
-  hello: {
-    flex: 1,
-    backgroundColor: Colors.dark,
   },
   item: {
     width: '50%',
@@ -104,5 +85,9 @@ const styles = {
     alignItems: 'center',
     backgroundColor: Colors.light,
     paddingVertical: 5,
+  },
+  answerButtonText: {
+    fontSize: 13,
+    color: Colors.dark,
   },
 };

@@ -8,40 +8,34 @@ export default function ScoreBar({score}) {
   const maxScore = 100 - score.max;
 
   return (
-    <View style={{width: '100%'}}>
-      <View
-        style={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Text style={{fontSize: 18}}>
+    <View style={styles.container}>
+      <View style={styles.scoreContainer}>
+        <Text style={styles.scoreText}>
           {'Score: ' + Math.round(score.current) + '%'}
         </Text>
-        <Text style={{fontSize: 18}}>
+        <Text style={styles.scoreText}>
           {'Max Score: ' + Math.round(score.max) + '%'}
         </Text>
       </View>
-      <View style={{borderWidth: 2, borderColor: 'black'}}>
-        <View style={styles.ProgressContainer}>
+      <View style={styles.primaryScoreBar}>
+        <View style={styles.scoreBarContainer}>
           <View
             style={[
-              styles.ProgressBar,
+              styles.scoreBar,
               {backgroundColor: Colors.darker},
               {width: minScore + '%', position: 'absolute', zIndex: 999},
             ]}
           />
           <View
             style={[
-              styles.ProgressBar,
+              styles.scoreBar,
               {backgroundColor: Colors.dark_grey},
               {width: currentScore + '%', position: 'absolute'},
             ]}
           />
           <View
             style={[
-              styles.ProgressBar,
+              styles.scoreBar,
               {backgroundColor: Colors.lighter},
               {width: maxScore + '%', position: 'absolute', right: 0},
             ]}
@@ -53,13 +47,29 @@ export default function ScoreBar({score}) {
 }
 
 const styles = StyleSheet.create({
-  ProgressContainer: {
+  container: {
+    width: '100%',
+  },
+  scoreText: {
+    fontSize: 18,
+  },
+  scoreContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  scoreBarContainer: {
     height: 20,
     width: '100%',
     backgroundColor: Colors.light_grey,
     position: 'relative',
   },
-  ProgressBar: {
+  primaryScoreBar: {
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+  scoreBar: {
     height: 20,
   },
 });

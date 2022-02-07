@@ -1,7 +1,7 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Title(props) {
   let difficulty = 0;
@@ -46,16 +46,15 @@ export default function Title(props) {
 
   return (
     <View style={styles.titleContainer}>
-      <Text style={styles.sectionTitle}>
+      <Text style={styles.title}>
         Question {props.position} out of {props.questionsNumber}
       </Text>
-      <Text style={styles.sectionDescription}>
-        {decodeURIComponent(props.category)}
-      </Text>
-      <View style={{display: 'flex', flexDirection: 'row', marginTop: 4}}>
+      <Text style={styles.category}>{decodeURIComponent(props.category)}</Text>
+      <View style={styles.starsContainer}>
         <Icon name="star" size={14} color={Colors.black} />
 
         {getStarsHtml()}
+
         <Icon name="star" size={14} color={Colors.light} />
 
         <Icon name="star" size={14} color={Colors.light} />
@@ -65,25 +64,23 @@ export default function Title(props) {
 }
 
 const styles = {
-  quizContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 50,
-  },
   titleContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
-  sectionDescription: {
+  category: {
     marginTop: 2,
     fontSize: 18,
     fontWeight: '400',
   },
-  sectionTitle: {
+  title: {
     fontSize: 24,
     fontWeight: '600',
+  },
+  starsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 4,
   },
 };
