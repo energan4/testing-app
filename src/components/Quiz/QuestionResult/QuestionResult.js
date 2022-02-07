@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Colors from '../../../utils/Colors';
 
 export default function QuestionResult(props) {
   const isCorrectAnswer = props.isCorrectAnswer;

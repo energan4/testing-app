@@ -6,10 +6,11 @@
  * @flow strict-local
  */
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 
 import {
+  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -17,7 +18,7 @@ import {
   View,
 } from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Colors from '../../../utils/Colors';
 
 import JsonQuestions from '../../../data/questions.json';
 import ProgressBar from '../ProgressBar/ProgressBar';
@@ -44,18 +45,14 @@ const Quiz: () => Node = () => {
     max: 100,
   });
 
-  useEffect(() => {
-    const calculateScore = () => {
-      setScore({
-        min: (correctAnswersNumber / questions.length) * 100,
-        current: (correctAnswersNumber / position) * 100,
-        max:
-          ((questions.length - incorrectAnswersNumber) / questions.length) *
-          100,
-      });
-    };
-    calculateScore();
-  }, [incorrectAnswersNumber, correctAnswersNumber]);
+  const calculateScore = () => {
+    setScore({
+      min: (correctAnswersNumber / questions.length) * 100,
+      current: (correctAnswersNumber / position) * 100,
+      max:
+        ((questions.length - incorrectAnswersNumber) / questions.length) * 100,
+    });
+  };
 
   const emitAnswer = answer => {
     setIsQuestionResultVisible(true);
@@ -65,6 +62,7 @@ const Quiz: () => Node = () => {
     } else {
       setIncorrectAnswersNumber(prev => prev + 1);
     }
+
     const isLastPosition = position === questions.length;
     if (isLastPosition) {
       setIsLastQuestion(true);
@@ -79,6 +77,8 @@ const Quiz: () => Node = () => {
       setPosition(prev => prev + 1);
       setCurrentQuestion(questions[position]);
     }
+    calculateScore();
+
     setIsQuestionResultVisible(false);
   };
 
@@ -89,7 +89,12 @@ const Quiz: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={[styles.container, backgroundStyle]}>
+    <SafeAreaView
+      style={[
+        {paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0},
+        styles.container,
+        backgroundStyle,
+      ]}>
       <View style={styles.quizPrimaryContainer}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ProgressBar position={position} questionsNumber={questions.length} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Colors from '../../../utils/Colors';
 import {Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 

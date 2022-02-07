@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {combineShuffledAnswers} from '../../../utils/arrayUtils';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Colors from '../../../utils/Colors';
 
 export default function Answers(props) {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -21,7 +21,7 @@ export default function Answers(props) {
       combineShuffledAnswers(props.incorrectAnswers, props.correctAnswer),
     );
     setIsDisabled(false);
-  }, [position]);
+  }, [props.correctAnswer, props.incorrectAnswers]);
 
   const emitAnswer = answer => {
     setIsDisabled(true);

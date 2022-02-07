@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Colors from '../../../utils/Colors';
 
 export default function ProgressBar(props) {
   const position = props.position;
